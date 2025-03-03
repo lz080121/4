@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>濃度計算機</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>濃度計算機</h2>
+        <label for="soluteMass">溶質質量 (g):</label>
+        <input type="number" id="soluteMass" placeholder="輸入溶質質量">
+        
+        <label for="solventMass">溶劑質量 (g):</label>
+        <input type="number" id="solventMass" placeholder="輸入溶劑質量">
+        
+        <label for="totalMass">溶液總質量 (g):</label>
+        <input type="number" id="totalMass" placeholder="輸入溶液總質量">
+
+        <button onclick="calculateConcentration()">計算濃度</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateConcentration() {
+            var soluteMass = parseFloat(document.getElementById('soluteMass').value);
+            var solventMass = parseFloat(document.getElementById('solventMass').value);
+            var totalMass = parseFloat(document.getElementById('totalMass').value);
+
+            if (isNaN(soluteMass) || isNaN(solventMass) || isNaN(totalMass) || totalMass <= 0) {
+                document.getElementById('result').innerHTML = '請正確輸入所有數值！';
+                return;
+            }
+
+            // 計算質量百分比濃度
+            var concentration = (soluteMass / totalMass) * 100;
+
+            // 顯示結果
+            document.getElementById('result').innerHTML = '濃度: ' + concentration.toFixed(2) + '%';
+        }
+    </script>
+
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
